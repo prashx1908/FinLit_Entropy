@@ -1,0 +1,12 @@
+django
+transformers
+torch
+Django        # Django version
+Pillow         # Required for handling image uploads
+matplotlib     # For plotting charts
+numpy          # Matplotlib dependency
+scipy        # Matplotlib dependency
+joblib        # For loading and saving models and preprocessing tools
+pandas         # For data manipulation and analysis
+scikit-learn # For LabelEncoder and other machine learning utilities
+tensorflow
