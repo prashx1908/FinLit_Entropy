@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="post-detail-container">
+    <h2>{{ post.title }}</h2>
+    <p>by {{ post.user.username }}</p>
+    <p>{{ post.content }}</p>
+    {% if post.media %}
+        <img src="{{ post.media.url }}" alt="Post media" class="post-media">
+    {% endif %}
+    <p class="post-date">{{ post.created_at }}</p>
+
+    <div class="post-interactions">
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'like_post' post.id %}">
+                {% csrf_token %}
+                <button type="submit" class="like-btn">
+                    {% if user in post.likes.all %}
+                        Unlike ({{ post.number_of_likes }})
+                    {% else %}
+                        Like ({{ post.number_of_likes }})
+                    {% endif %}
+                </button>
+            </form>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}">log in</a> to like this post.</p>
+        {% endif %}
+    </div>
+
+    <h3>Comments</h3>
+    <ul class="comments-list">
+        {% for comment in post.comments.all %}
+            <li>
+                <strong>{{ comment.user.username }}</strong>
+                <p>{{ comment.content }}</p>
+                <p class="comment-date">{{ comment.created_at }}</p>
+            </li>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </ul>
+
+    {% if user.is_authenticated %}
+        <h3>Add a Comment</h3>
+        <form method="post" action="{% url 'comment_on_post' post.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="primary-btn">Submit</button>
+        </form>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> to comment.</p>
+    {% endif %}
+</div>
+{% endblock %}

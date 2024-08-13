@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="community-feed-container">
+    <h2>Community Feed</h2>
+
+    <!-- Create New Post Section -->
+    {% if user.is_authenticated %}
+        <div class="new-post-container">
+            <h3>Create a New Post</h3>
+            <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Title" required>
+                <textarea name="content" rows="3" placeholder="Write your thoughts..." required></textarea>
+                <input type="file" name="media">
+                <button type="submit" class="small-button post-button">Post</button>
+            </form>
+        </div>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> to create a post.</p>
+    {% endif %}
+
+    <!-- Display Posts -->
+    {% for post in posts %}
+        <div class="post-card">
+            <h3>{{ post.title }}</h3>
+            <p>by {{ post.user.username }}</p>
+            <p>{{ post.content|linebreaksbr }}</p>
+            {% if post.media %}
+                <img src="{{ post.media.url }}" alt="Post media" class="post-media">
+            {% endif %}
+            <p class="post-date">{{ post.created_at }}</p>
+
+            <!-- Like Button -->
+            <div class="post-interactions">
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'like_post' post.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="small-button like-button">
+                            {% if user in post.likes.all %}
+                                Unlike ({{ post.likes.count }})
+                            {% else %}
+                                Like ({{ post.likes.count }})
+                            {% endif %}
+                        </button>
+                    </form>
+                {% else %}
+                    <p>Please <a href="{% url 'login' %}">log in</a> to like this post.</p>
+                {% endif %}
+            </div>
+
+            <!-- Comment Form -->
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'comment_on_post' post.id %}" class="comment-form">
+                    {% csrf_token %}
+                    <textarea name="content" rows="3" placeholder="Add a comment..."></textarea>
+                    <button type="submit" class="small-button submit-button">Submit</button>
+                </form>
+            {% else %}
+                <p>Please <a href="{% url 'login' %}">log in</a> to comment.</p>
+            {% endif %}
+
+<div class="comments-section">
+    <h4>Comments</h4>
+    <ul class="comments-list">
+        {% for comment in post.comments.all %}
+            <li class="comment-item">
+                <strong>{{ comment.user.username }}</strong>
+                <p class="comment-content">{{ comment.content|linebreaksbr }}</p>
+                <p class="comment-date">{{ comment.created_at }}</p>
+                <!-- Delete Comment Button -->
+                {% if user == comment.user %}
+                    <form method="post" action="{% url 'delete_comment' comment.id %}" style="margin-top: 1rem;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn">Delete Comment</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </ul>
+</div>
+
+            <!-- Delete Post Button -->
+            {% if user == post.user %}
+                <form method="post" action="{% url 'delete_post' post.id %}" style="margin-top: 1rem;">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Delete Post</button>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<script>
+window.embeddedChatbotConfig = {
+chatbotId: "QhGN1wm0aakNaRR-sIpAr",
+domain: "www.chatbase.co"
+}
+</script>
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="QhGN1wm0aakNaRR-sIpAr"
+domain="www.chatbase.co"
+defer>
+</script>
+{% endblock %}

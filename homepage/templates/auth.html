@@ -1,0 +1,14 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Login / Register</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" name="login" class="primary-btn">Login</button>
+        <button type="submit" name="signup" class="secondary-btn">Sign Up</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'homepage/base.html' %}
+ {% load static %}
+{% block content %}
+<header class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Control your financial future easily</h1>
+            <p>From easy money management to financial goals and investments. FinLit is your one-stop solution.</p>
+            <div class="hero-buttons">
+                <button class="btn primary-btn" onclick="window.location.href='{% url 'chatbot' %}">FinLit Assistant</button>
+                <button class="btn secondary-btn">Educate Yourself</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'images/phone-mockup.png' %}" alt="FinLit App">
+        </div>
+    </div>
+</header>
+{% endblock %}

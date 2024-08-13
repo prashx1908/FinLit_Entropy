@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinLit - Control your financial future easily</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'homepage' %}">
+    <img src="{% static 'images/finlit-logo.png' %}" alt="FinLit Logo">
+</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'investment_recommendation' %}">Investment Recommendation</a></li>
+                <li><a href="{% url 'expenditure_view' %}">Expense Tracker</a></li>
+                <li><a href="{% url 'community' %}">Community</a></li>
+                <li><a href="{% url 'financial_resources' %}">Financial Resources</a></li>
+                <li><a href="{% url 'literacy_games' %}">Literacy</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="profile">
+
+                    <a href="{% url 'logout' %}" class="personal-assistant-btn">Logout</a>
+                    <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="personal-assistant-btn">Login</a>
+                <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

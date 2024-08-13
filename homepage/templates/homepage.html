@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f4f4f4;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    margin-left :10px;
+    color: #555;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left :10px;
+}
+
+.hero .btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.primary-btn {
+    background-color: #f1c40f;
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+    margin-left:30px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to FinLit Empower</h1>
+        <p>Take control of your financial future with our easy-to-use tools and resources. Join our community today!</p>
+        <div class="hero-buttons">
+            <a href="{% url 'chatbot' %}" class="btn primary-btn">Finlit AI</a>
+            <a href="{% url 'community' %}" class="btn secondary-btn">Community Feed</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'images/phone-mockup.png' %}" alt="Financial Tools">
+    </div>
+</section>
+{% endblock %}

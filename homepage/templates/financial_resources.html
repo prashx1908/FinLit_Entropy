@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}Financial Resources{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Unique styles for the Financial Resources page */
+    .financial-resources {
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .financial-resources .tips-section {
+        background: #f8f9fa;
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .financial-resources .tips-section h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #E49B0F;
+    }
+
+    .financial-resources .tips-section p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .financial-resources .tips-section ul {
+        margin-top: 20px;
+        list-style-type: square;
+        padding-left: 20px;
+    }
+
+    .financial-resources .tips-section li {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #444;
+    }
+    .financial-resources .tips-section b {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #E49B0F;
+
+    }
+
+    .financial-resources .schemes-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .financial-resources .scheme-box {
+        flex: 1;
+        min-width: 280px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .financial-resources .scheme-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .financial-resources .scheme-box h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #FFC000; /* Text color */
+    text-shadow:
+        1px 1px 0 #ffffff, /* Light gray shadow */
+        -1px -1px 0 #ffffff,
+        1px -1px 0 #ffffff,
+        -1px 1px 0 #ffffff; /* Adjust color as needed */
+}
+
+    .financial-resources .scheme-box p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .financial-resources .scheme-box a {
+        display: inline-block;
+        margin-top: 15px;
+        font-size: 16px;
+        color: #FFAA1D;
+        text-decoration: none;
+        border-bottom: 1px solid #FFAA1D;
+        transition: color 0.3s, border-bottom 0.3s;
+    }
+
+    .financial-resources .scheme-box a:hover {
+        color: #808080;
+        border-bottom: 1px solid #808080;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="financial-resources">
+    <div class="tips-section">
+        <h2>Essential Tips for Smart Investing</h2>
+        <p>Making informed investment decisions is crucial for long-term financial stability and growth. Here are some comprehensive tips to help you navigate the world of investing:</p>
+        <ul>
+            <li><b>Financial literacy can prevent devastating financial mistakes:</b> Floating rate loans may have different interest rates each month, while traditional individual retirement account (IRA) contributions can’t be withdrawn until retirement. For someone unaware of these and other financial facts, seemingly innocent financial decisions may have long-term implications that cost them money or impact life plans. Financial literacy helps individuals avoid making mistakes with their personal finances.</li>
+            <li><b>Financial literacy prepares people for financial emergencies:</b>  Topics such as saving or emergency preparedness get individuals ready for uncertain times. Though losing a job or having a major unexpected expense can be financially impactful, an individual can cushion the blow by saving regularly.</li>
+            <li><b>Financial literacy can help individuals reach their goals:</b>  By better understanding how to budget and save money, individuals can create plans that define expectations, hold them accountable to their finances, and set a course for achieving important financial goals. Though someone may not be able to afford a dream today, they can create a plan that can help make it happen.</li>
+            <li><b>Financial literacy gives rise to confidence:</b>  Imagine having to make a life-changing financial decision without all the necessary information. With knowledge about finances, individuals can approach major life choices with greater confidence. They'll be more likely to achieve the outcome they desire and less likely to be surprised or negatively impacted by unforeseen outcomes.</li>
+            <li><b>Create a Budget:</b>  Track how much money you receive each month and how much you spend. You can use an Excel spreadsheet, paper, or a budgeting app. Your budget should include income (paychecks, investments, alimony), fixed expenses (rent/mortgage payments, utilities, loan payments), discretionary spending (nonessentials such as eating out, shopping, and travel), and savings.</li>
+            <li><b>Pay Yourself First:</b>  To build savings, this reverse budgeting strategy involves choosing a savings goal, such as paying for higher education, deciding how much you want to contribute toward it each month, and setting that amount aside before you divvy up the rest of your expenses.</li>
+            <li><b>Pay Bills Promptly:</b>  Stay on top of monthly bills, making sure that your payments are always sent to arrive on time. Consider taking advantage of automatic debits from a checking account or bill-pay apps, and sign up for payment reminders (by email, phone, or text).</li>
+            <li><b>Get Your Credit Report Once a year:</b>   consumers can request a free credit report from each of the three major credit bureaus—Equifax, Experian, and TransUnion—through the federally created website AnnualCreditReport.com. Federal Trade Commission. "Free Credit Reports." Review these reports and dispute any errors by informing the credit bureau of inaccuracies. Because you can get three of them, consider spacing out your requests throughout the year to monitor your credit regularly.</li>
+        </ul>
+    </div>
+
+    <div class="schemes-container">
+        <div class="scheme-box">
+            <h3>Public Provident Fund (PPF)</h3>
+            <p>A government-backed, long-term investment scheme with tax benefits and a fixed interest rate. Ideal for conservative investors seeking secure returns.</p>
+            <a href="https://uat.indiapost.gov.in/Financial/Pages/Content/PPF-Account.aspx">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>National Pension System (NPS)</h3>
+            <p>A retirement savings scheme offering tax benefits and investment in various asset classes, including equities, bonds, and government securities.</p>
+            <a href="https://www.indiapost.gov.in/Financial/pages/content/nps.aspx">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Equity Linked Savings Scheme (ELSS)</h3>
+            <p>Mutual funds that offer tax deductions under Section 80C of the Income Tax Act, with investments primarily in equities for potential high returns.</p>
+            <a href="https://cleartax.in/s/elss">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Systematic Investment Plan (SIP)</h3>
+            <p>A disciplined investment approach allowing regular contributions to mutual funds, promoting wealth accumulation over time.</p>
+            <a href="https://www.sbimf.com/sip">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Fixed Deposits (FD)</h3>
+            <p>A low-risk investment option with fixed returns and various tenure options. Suitable for conservative investors looking for guaranteed returns.</p>
+            <a href="https://www.paisabazaar.com/indian-bank/fixed-deposits/">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Gold ETFs</h3>
+            <p>Exchange-traded funds that invest in gold, providing a way to gain exposure to the precious metal without physical ownership.</p>
+            <a href="https://www.nseindia.com/products-services/etfs-gold">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Real Estate Investment Trusts (REITs)</h3>
+            <p>Invest in real estate assets through REITs, offering a way to earn rental income and capital appreciation without direct property ownership.</p>
+            <a href="https://www.investopedia.com/terms/r/reit.asp">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>National Savings Certificate (NSC)</h3>
+            <p>A government-backed savings scheme offering fixed returns and tax benefits under Section 80C, suitable for risk-averse investors.</p>
+            <a href="https://www.nsiindia.gov.in/(S(tpjwqo55ecy1it45tvgep355))/InternalPage.aspx?Id_Pk=90">Learn More</a>
+        </div>
+        <div class="scheme-box">
+            <h3>Unit Linked Insurance Plan (ULIP)</h3>
+            <p>A combination of insurance and investment, offering policyholders the opportunity to invest in various funds while providing life cover.</p>
+            <a href="https://groww.in/p/unit-link-insurance-plan-ulip">Learn More</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

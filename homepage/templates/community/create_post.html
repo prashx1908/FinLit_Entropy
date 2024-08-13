@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="login-register-container">
+    <h2>Create New Post</h2>
+    <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="primary-btn">Post</button>
+    </form>
+</div>
+{% endblock %}

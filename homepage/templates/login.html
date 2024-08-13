@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="login-register-container">
+    <h2>Login to FinLit</h2>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="primary-btn">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+</div>
+{% endblock %}

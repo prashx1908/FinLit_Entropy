@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="community-feed">
+    <h2>Community Feed</h2>
+    <a href="{% url 'create_post' %}" class="btn primary-btn">Create New Post</a>
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+                {% if post.media %}
+                    <img src="{{ post.media.url }}" alt="Post Media">
+                {% endif %}
+                <p>Posted by {{ post.user.username }} on {{ post.created_at }}</p>
+                <a href="{% url 'post_detail' post.id %}">View Details</a>
+                <form method="post" action="{% url 'post_like' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Like ({{ post.likes.count }})</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<iframe
+src="https://www.chatbase.co/chatbot-iframe/QhGN1wm0aakNaRR-sIpAr"
+width="100%"
+style="height: 100%; min-height: 700px"
+frameborder="0"
+></iframe>
+<script>
+window.embeddedChatbotConfig = {
+chatbotId: "QhGN1wm0aakNaRR-sIpAr",
+domain: "www.chatbase.co"
+}
+</script>
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="QhGN1wm0aakNaRR-sIpAr"
+domain="www.chatbase.co"
+defer>
+</script>
+{% endblock %}
+
+

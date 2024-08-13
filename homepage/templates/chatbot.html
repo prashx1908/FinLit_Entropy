@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/finlit-logo.png' %}" alt="FinLit Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'investment_recommendation' %}">Investment Recommendation</a></li>
+                <li><a href="{% url 'expenditure_view' %}">Expense Tracker</a></li>
+                <li><a href="{% url 'community' %}">Community</a></li>
+                <li><a href="{% url 'financial_resources' %}">Financial Resources</a></li>
+                <li><a href="{% url 'literacy_games' %}">Literacy</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="profile">
+
+                    <a href="{% url 'logout' %}" class="personal-assistant-btn">Logout</a>
+                    <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="personal-assistant-btn">Login</a>
+                <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+            {% endif %}
+        </div>
+         <style>
+
+        .chat-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px); /* Adjust based on navbar height */
+            padding: 10px;
+
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 70%;
+             border-radius:10px;
+            max-width: 800px; /* Set the maximum width of the iframe */
+            max-height: 700px; /* Set the maximum height of the iframe */
+        }
+    </style>
+        <H3><b> <center>FINLIT MULTILINGUAL AI BOT</center></b></H3>
+    <div class="chat-container">
+   <iframe
+src="https://www.chatbase.co/chatbot-iframe/duQjHXubj9oUthk3i6lMy"
+width="100%"
+style="height: 100%; min-height: 700px"
+frameborder="0"
+></iframe>
+    </div>
+</body>
+</html>

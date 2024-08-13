@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Recommendation </title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            width: 48%;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group select {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 100%;
+        }
+        .btn-submit {
+            background-color: #ffc107;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Investment Recommendation Form</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.gender.label_tag }}
+                    {{ form.gender }}
+                </div>
+                <div class="form-group">
+                    {{ form.age.label_tag }}
+                    {{ form.age }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.Investment_Avenues.label_tag }}
+                    {{ form.Investment_Avenues }}
+                </div>
+                <div class="form-group">
+                    {{ form.mutual_funds.label_tag }}
+                    {{ form.mutual_funds }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.equity_market.label_tag }}
+                    {{ form.equity_market }}
+                </div>
+                <div class="form-group">
+                    {{ form.debentures.label_tag }}
+                    {{ form.debentures }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.government_bonds.label_tag }}
+                    {{ form.government_bonds }}
+                </div>
+                <div class="form-group">
+                    {{ form.fixed_deposits.label_tag }}
+                    {{ form.fixed_deposits }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.ppf.label_tag }}
+                    {{ form.ppf }}
+                </div>
+                <div class="form-group">
+                    {{ form.gold.label_tag }}
+                    {{ form.gold }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.stock_market.label_tag }}
+                    {{ form.stock_market }}
+                </div>
+                <div class="form-group">
+                    {{ form.factor.label_tag }}
+                    {{ form.factor }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.purpose.label_tag }}
+                    {{ form.purpose }}
+                </div>
+                <div class="form-group">
+                    {{ form.duration.label_tag }}
+                    {{ form.duration }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.invest_monitor.label_tag }}
+                    {{ form.invest_monitor }}
+                </div>
+                <div class="form-group">
+                    {{ form.expect.label_tag }}
+                    {{ form.expect }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.avenue.label_tag }}
+                    {{ form.avenue }}
+                </div>
+                <div class="form-group">
+                    {{ form.source.label_tag }}
+                    {{ form.source }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    {{ form.salary.label_tag }}
+                    {{ form.salary }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Get Recommendation</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

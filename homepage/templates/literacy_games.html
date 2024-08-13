@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles1.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+             <a href="{% url 'homepage' %}">
+    <img src="{% static 'images/finlit-logo.png' %}" alt="FinLit Logo">
+</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'investment_recommendation' %}">Investment Recommendation</a></li>
+                <li><a href="{% url 'expenditure_view' %}">Expense Tracker</a></li>
+                <li><a href="{% url 'community' %}">Community</a></li>
+                <li><a href="{% url 'financial_resources' %}">Financial Resources</a></li>
+                <li><a href="{% url 'literacy_games' %}">Literacy</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+               <div class="profile">
+
+                    <a href="{% url 'logout' %}" class="personal-assistant-btn">Logout</a>
+                    <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="personal-assistant-btn">Login</a>
+                <a href="{% url 'chatbot' %}" class="personal-assistant-btn">FinLit AI</a>
+            {% endif %}
+        </div>
+    </nav>
+    <title>Financial Literacy Quiz</title>
+    <style>
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .tips {
+            margin-top: 20px;
+        }
+        .tips p {
+            background: #dff9fb;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 600px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow: hidden;
+            display: none; /* Initially hidden */
+        }
+
+        .chatbot-header {
+            background: #28a745;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+        .chatbot-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .chatbot-input button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom-right-radius: 10px;
+        }
+
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>Financial Literacy Quiz</h2>
+    <form id="quiz-form">
+        <!-- Question 1 -->
+        <div class="question">
+            <h3>1. What is the primary purpose of a budget?</h3>
+            <label><input type="radio" name="q1" value="a"> To keep track of your daily activities</label>
+            <label><input type="radio" name="q1" value="b"> To help you manage your money</label>
+            <label><input type="radio" name="q1" value="c"> To calculate your net worth</label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h3>2. What does it mean to diversify your investments?</h3>
+            <label><input type="radio" name="q2" value="a"> Putting all your money in one stock</label>
+            <label><input type="radio" name="q2" value="b"> Spreading your investments across different assets</label>
+            <label><input type="radio" name="q2" value="c"> Investing only in government bonds</label>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h3>3. What is compound interest?</h3>
+            <label><input type="radio" name="q3" value="a"> Interest calculated only on the principal amount</label>
+            <label><input type="radio" name="q3" value="b"> Interest calculated on both the principal and the accumulated interest</label>
+            <label><input type="radio" name="q3" value="c"> Interest that decreases over time</label>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h3>4. What is an emergency fund?</h3>
+            <label><input type="radio" name="q4" value="a"> A fund for daily expenses</label>
+            <label><input type="radio" name="q4" value="b"> Money set aside for unexpected expenses</label>
+            <label><input type="radio" name="q4" value="c"> A fund for buying luxury items</label>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h3>5. What is the best way to improve your credit score?</h3>
+            <label><input type="radio" name="q5" value="a"> Max out your credit cards</label>
+            <label><input type="radio" name="q5" value="b"> Pay your bills on time</label>
+            <label><input type="radio" name="q5" value="c"> Close old credit accounts</label>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <h3>6. What is the difference between a debit card and a credit card?</h3>
+            <label><input type="radio" name="q6" value="a"> Debit cards allow you to borrow money; credit cards do not</label>
+            <label><input type="radio" name="q6" value="b"> Debit cards are linked to your bank account; credit cards allow you to borrow money</label>
+            <label><input type="radio" name="q6" value="c"> Debit cards and credit cards are the same</label>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <h3>7. What is a mutual fund?</h3>
+            <label><input type="radio" name="q7" value="a"> A fund where you can lend money to your friends</label>
+            <label><input type="radio" name="q7" value="b"> A pool of money from many investors used to buy securities</label>
+            <label><input type="radio" name="q7" value="c"> A savings account offered by mutual banks</label>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <h3>8. Why is it important to have a retirement plan?</h3>
+            <label><input type="radio" name="q8" value="a"> To ensure you have enough money to live on when you retire</label>
+            <label><input type="radio" name="q8" value="b"> To buy a house when you retire</label>
+            <label><input type="radio" name="q8" value="c"> To spend all your money before you retire</label>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <h3>9. What is the purpose of a credit report?</h3>
+            <label><input type="radio" name="q9" value="a"> To track your spending habits</label>
+            <label><input type="radio" name="q9" value="b"> To provide a detailed history of your credit activity</label>
+            <label><input type="radio" name="q9" value="c"> To show your employment history</label>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <h3>10. What is an interest rate?</h3>
+            <label><input type="radio" name="q10" value="a"> The fee charged by a lender for borrowing money</label>
+            <label><input type="radio" name="q10" value="b"> The amount of money you save over time</label>
+            <label><input type="radio" name="q10" value="c"> The amount of money deducted from your bank account</label>
+        </div>
+
+          <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+    <div id="result" class="result"></div>
+</div>
+
+
+
+<script>
+    // Quiz Functionality
+    function submitQuiz() {
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'b',
+            q8: 'a',
+            q9: 'b',
+            q10: 'a',
+        };
+
+        let score = 0;
+        const form = document.getElementById('quiz-form');
+        const formData = new FormData(form);
+
+        for (const [question, answer] of formData.entries()) {
+            if (answer === correctAnswers[question]) {
+                score++;
+            }
+        }
+
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML = `<h3>You scored ${score} out of 10</h3>`;
+
+        let tips = '';
+        if (score <= 4) {
+            tips = `<div class="tips"><p>Your financial literacy is at a beginner level. Consider learning more about budgeting, saving, and investing.</p></div>`;
+        } else if (score <= 7) {
+            tips = `<div class="tips"><p>Your financial literacy is average. You have a good grasp of the basics, but there's room for improvement. Focus on advanced topics like retirement planning and asset management.</p></div>`;
+        } else {
+            tips = `<div class="tips"><p>Great job! Your financial literacy is strong. Keep up the good work, and continue refining your knowledge.</p></div>`;
+        }
+
+        resultContainer.innerHTML += tips;
+
+        // Show chatbot
+        const chatbot = document.getElementById('chatbot');
+        chatbot.style.display = 'block';
+    }
+
+
+</script>
+
+<!-- Chatbot Scripts -->
+
+<script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="GnGVczoeti1FWSfkX1MSe"
+    domain="www.chatbase.co"
+    defer>
+</script>
+
+</body>
+</html>

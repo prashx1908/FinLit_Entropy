@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+ {% load static %}
+{% block content %}
+<div class="container">
+    <h2>Community</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="content" placeholder="Share your thoughts..." required></textarea>
+        <input type="file" name="image">
+        <input type="file" name="video">
+        <button type="submit" class="primary-btn">Post</button>
+    </form>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="post">
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Image">
+                {% endif %}
+                {% if post.video %}
+                    <video controls>
+                        <source src="{{ post.video.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+
+                <div class="comments">
+                    {% for comment in post.comments.all %}
+                        <div class="comment">
+                            <p>{{ comment.content }}</p>
+                            <small>Commented by {{ comment.user.username }} on {{ comment.created_at }}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <form method="POST" action="{% url 'add_comment' post.id %}">
+                    {% csrf_token %}
+                    <textarea name="content" placeholder="Add a comment..." required></textarea>
+                    <button type="submit" class="secondary-btn">Comment</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

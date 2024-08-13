@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Expenditure Form {% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h1>Enter Your Expenditure Details</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group left">
+                    <label for="id_rent">Rent:</label>
+                    {{ form.rent }}
+                </div>
+                <div class="form-group right">
+                    <label for="id_groceries">Groceries:</label>
+                    {{ form.groceries }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group left">
+                    <label for="id_utilities">Utilities:</label>
+                    {{ form.utilities }}
+                </div>
+                <div class="form-group right">
+                    <label for="id_transportation">Transportation:</label>
+                    {{ form.transportation }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group left">
+                    <label for="id_healthcare">Healthcare:</label>
+                    {{ form.healthcare }}
+                </div>
+                <div class="form-group right">
+                    <label for="id_entertainment">Entertainment:</label>
+                    {{ form.entertainment }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group left">
+                    <label for="id_savings">Savings:</label>
+                    {{ form.savings }}
+                </div>
+                <div class="form-group right">
+                    <label for="id_others">Others:</label>
+                    {{ form.others }}
+                </div>
+            </div>
+            <button type="submit" class="expenditure-submit-button">Submit</button>
+        </form>
+    </div>
+{% endblock %}
