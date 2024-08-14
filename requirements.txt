@@ -1,5 +1,6 @@
 python-dotenv
-dj_database_url>
+psycopg2-binary
+dj_database_url
 django
 gunicorn       # Django version
 Pillow         # Required for handling image uploads
