@@ -1,7 +1,5 @@
 django
-transformers
-torch
-Django        # Django version
+gunicorn       # Django version
 Pillow         # Required for handling image uploads
 matplotlib     # For plotting charts
 numpy          # Matplotlib dependency
