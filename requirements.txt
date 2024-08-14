@@ -1,3 +1,4 @@
+dj_database_url>
 django
 gunicorn       # Django version
 Pillow         # Required for handling image uploads
