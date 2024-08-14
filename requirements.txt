@@ -1,4 +1,4 @@
-dotenv
+python-dotenv
 dj_database_url>
 django
 gunicorn       # Django version
