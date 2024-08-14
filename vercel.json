@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "finlit/wsgi.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "finlit/wsgi.py" }
+  ]
+}
