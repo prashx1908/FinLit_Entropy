@@ -80,16 +80,8 @@ import os
 import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'finlit'),  # Replace 'finlit' with your default database name
-        'USER': os.getenv('DB_USER', 'finlit'),  # Replace 'finlit' with your default database user
-        'PASSWORD': os.getenv('DB_PASSWORD'),  # Leave empty if using environment variables
-        'HOST': os.getenv('DB_HOST', 'localhost'),  # Default to 'localhost'
-        'PORT': os.getenv('DB_PORT', '5432'),  # Default to '5432'
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
-
 from dotenv import load_dotenv
 load_dotenv()
 
