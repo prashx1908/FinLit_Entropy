@@ -8,6 +8,1046 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
+    <style>
+        /* General Styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Light gray background */
+}
+
+.navbar {
+    background-color: #fff; /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333; /* Dark gray text color */
+    font-weight: 700;
+}
+
+.personal-assistant-btn {
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White text */
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    background-color: #f7f7f7; /* Light gray background */
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333; /* Dark gray text */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666; /* Medium gray text */
+}
+
+.hero-buttons .btn {
+    padding: 0.8rem 1.2rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.primary-btn {
+    background-color: #f1c40f; /* Yellow */
+    color: #fff; /* White text */
+    border-radius: 20px;
+}
+
+.primary-btn:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+.secondary-btn {
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White text */
+    border-radius: 20px;
+}
+
+.secondary-btn:hover {
+    background-color: #222; /* Darker gray on hover */
+}
+
+.hero-image img {
+    width: 500px;
+    transform: rotate(-10deg);
+}
+
+/* Login and Register Page Styles */
+.login-register-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-register-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333; /* Dark gray text */
+}
+
+.login-register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-register-container .form-group {
+    margin-bottom: 20px;
+}
+
+.login-register-container .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-register-container .form-group .field-errors {
+    margin-top: 5px;
+    color: red; /* Error messages in red */
+}
+
+.login-register-container form button.primary-btn {
+    background-color: #f1c40f; /* Yellow */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-register-container form button.primary-btn:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+.login-register-container p {
+    text-align: center;
+    color: #333; /* Dark gray text */
+}
+
+.login-register-container p a {
+    color: #f1c40f; /* Yellow link color */
+    text-decoration: none;
+}
+
+.login-register-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Community Page Styles */
+.community-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-list li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd; /* Light gray border */
+}
+
+.post-list li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333; /* Dark gray text */
+}
+
+.post-content {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666; /* Medium gray text */
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.comments-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd; /* Light gray border */
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333; /* Dark gray text */
+}
+
+.dashboard-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.dashboard-links a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White text */
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.dashboard-links a:hover {
+    background-color: #222; /* Darker gray on hover */
+}
+
+/* Post Detail Page Styles */
+.post-detail-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.post-detail-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post-media {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.post-date, .comment-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments-list li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Adjust Create Post Form Styles */
+.login-register-container form input,
+.login-register-container form textarea,
+.login-register-container form button {
+    margin-bottom: 1rem;
+}
+
+/* Post Interactions */
+.post-interactions {
+    margin-bottom: 2rem;
+}
+
+.like-btn {
+    background-color: #f1c40f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Comment Section */
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments-list li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+/* Community Feed Styles */
+.community-feed-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.community-feed-container a.primary-btn {
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #f1c40f;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.community-feed-container a.primary-btn:hover {
+    background-color: #e0a800;
+}
+
+.post {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.post p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.post .media img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+input, select {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+}
+
+.btn-secondary {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #222;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+button.submit-btn {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+button.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.small-button {
+    padding: 6px 12px; /* Increased padding for more height */
+    font-size: 14px; /* Slightly larger font size */
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    max-width: 120px; /* Adjust as needed */
+    width: auto; /* Ensures button does not stretch too much */
+    display: inline-block; /* Keeps buttons from expanding to full width */
+    text-align: center; /* Centers text inside the button */
+    margin: 4px; /* Added margin to prevent clashing with other elements */
+}
+
+.like-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+}
+
+.submit-button {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.post-button {
+    background-color: #ffc107; /* Teal */
+    color: white;
+}
+
+.comment-button {
+    background-color: #ffc107; /* Yellow */
+    color: black;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker Red */
+}
+
+.expenditure-submit-button {
+    background-color: #ffc107; /* Yellow */
+    color: black;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    width: auto; /* Ensures button is not too wide */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker Red */
+}
+
+/* styles.css */
+
+/* Base styles for the container */
+.expenditure-container,
+.results-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* styles.css */
+
+/* Expenditure form styles */
+.expenditure-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.expenditure-form .form-row {
+    margin-bottom: 5px; /* Reduce spacing between form rows */
+}
+
+.expenditure-form label {
+    font-size: 14px;
+    margin-bottom: 2px;
+    display: block;
+}
+.advice {
+            margin-top: 20px;
+        }
+.advice {
+    margin-top: 20px;
+}
+
+.advice-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.advice-item h3 {
+    margin-top: 0;
+}
+
+.advice-item p {
+    margin: 0;
+}
+
+/* Conditional styling */
+.advice-item.high {
+    border-color: #ff4d4d;
+    background-color: #ffe6e6;
+}
+
+.advice-item.low {
+    border-color: #4dff4d;
+    background-color: #e6ffe6;
+}
+.form-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    width: 48%;
+}
+
+.form-group.left {
+    text-align: left;
+}
+
+.form-group.right {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
+.expenditure-form input,
+.expenditure-form select,
+.expenditure-form textarea {
+    width: 100%;
+    padding: 4px;
+    font-size: 18px;
+    font-family:bold;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.expenditure-submit-button {
+    margin-top: 20px;
+    align-self: center;
+    width:70%;
+   padding: 12px;
+   border-radius: 10px;
+}
+
+/* Additional styles for the container */
+.expenditure-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expenditure-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Results container styles */
+.results-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chart-left {
+    flex: 1;
+}
+
+.details-right {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.details-right h2 {
+    margin-bottom: 10px;
+}
+
+.details-right ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.details-right ul li {
+    margin-bottom: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.comment-content {
+    white-space: pre-wrap; /* Maintains whitespace and line breaks */
+}
+
+
+.like-btn, .comment-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.like-btn {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+.like-btn:hover {
+    background-color: #e0a800;
+}
+
+.comment-btn {
+    background-color: #333;
+    color: #fff;
+}
+
+.comment-btn:hover {
+    background-color: #555;
+}
+
+.comments {
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.comment {
+    margin-bottom: 1rem;
+}
+
+.comment p {
+    margin: 0;
+}
+
+
+.new-post-container {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.new-post-container h3 {
+    margin: 0 0 10px;
+}
+
+.new-post-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-post-container input[type="text"],
+.new-post-container textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.new-post-container input[type="file"] {
+    margin-bottom: 10px;
+}
+
+.post-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.post-card h3 {
+    margin: 0 0 10px;
+}
+
+.post-card p {
+    margin: 0 0 10px;
+}
+
+.post-media {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-interactions {
+    margin: 10px 0;
+}
+
+.like-btn {
+    background-color: #f1c40f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-btn:hover {
+    background-color: #e0a800;
+}
+
+.comment-form {
+    margin: 20px 0;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.comments-section h4 {
+    margin: 10px 0;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Light gray background */
+}
+
+.navbar {
+    background-color: #fff; /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333; /* Dark gray text color */
+    font-weight: 600;
+}
+
+.personal-assistant-btn {
+    background-color: #f1c40f; /* Dark gray */
+    color: #000000; /* White text */
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    background-color: #f7f7f7; /* Light gray background */
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333; /* Dark gray text */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666; /* Medium gray text */
+}
+
+.hero-buttons .btn {
+    padding: 0.8rem 1.2rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background-color: #f1c40f; /* Yellow */
+    color: #fff; /* White text */
+    border-radius: 20px;
+}
+
+.primary-btn:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+.secondary-btn {
+    background-color: #333; /* Dark gray */
+    color: #fff; /* White text */
+    border-radius: 20px;
+}
+
+.secondary-btn:hover {
+    background-color: #222; /* Darker gray on hover */
+}
+
+.hero-image img {
+    width: 500px;
+    transform: rotate(-10deg);
+}
+
+/* Login and Register Page Styles */
+.login-register-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 8px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-register-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333; /* Dark gray text */
+}
+
+.login-register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-register-container .form-group {
+    margin-bottom: 20px;
+}
+
+.login-register-container .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-register-container .form-group .field-errors {
+    margin-top: 5px;
+    color: red; /* Error messages in red */
+}
+
+.login-register-container form button.primary-btn {
+    background-color: #f1c40f; /* Yellow */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-register-container form button.primary-btn:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+.login-register-container p {
+    text-align: center;
+    color: #333; /* Dark gray text */
+}
+
+.login-register-container p a {
+    color: #f1c40f; /* Yellow link color */
+    text-decoration: none;
+}
+
+.login-register-container p a:hover {
+    text-decoration: underline;
+}
+
+    </style>
 <body>
     <nav class="navbar">
         <div class="container">
