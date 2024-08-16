@@ -20,7 +20,7 @@ FinLit Empower is a Django-based platform that helps users manage their finances
 - **Frontend:** HTML, CSS, JavaScript
 - **Database:** PostgreSQL
 - **Charting Library:** Matplotlib/Plotly (for expenditure visualization)
-- **AI Chatbot:** Hugging Face Transformers, integrated with the Django framework
+
 
 ## Installation and Setup
 
