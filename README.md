@@ -2,9 +2,10 @@
 
 FinLit Empower is a Django-based platform that helps users manage their finances effectively. The platform provides tools such as an expenditure tracker, investment recommendations, a community forum, and more. It also features an AI-powered chatbot to assist users with their financial queries.
 
-### DEMO VIDEO [https://youtu.be/ZpJ4CpnkLTU]
+### DEMO VIDEO [Click Here](https://youtu.be/ZpJ4CpnkLTU)
 
-### DEPLOYED SITE [https://finlit-entropy.onrender.com/]
+### DEPLOYED SITE [Click Here](https://finlit-entropy.onrender.com/)
+-**It Does have Spin-off time, kindly be patient while the site loads.
 
 ## Features
 
