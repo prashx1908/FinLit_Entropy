@@ -1,34 +1,27 @@
-# FinLit Empower Platform
+# FinLit Empower
 
-FinLit Empower is a Django-based platform that helps users manage their finances effectively. The platform provides tools such as an expenditure tracker, investment recommendations, a community forum, and more. It also features an AI-powered chatbot to assist users with their financial queries.
-
-### DEMO VIDEO [Click Here](https://youtu.be/ZpJ4CpnkLTU)
-
-### DEPLOYED SITE [Click Here](https://finlit-entropy.onrender.com/)
-- It Does have Spin-off time, kindly be patient while the site loads.
+FinLit Empower is a React app that helps users manage their finances: an expenditure tracker, an investment advisor, and a financial literacy quiz — all backed by deterministic, rule-based financial analysis running as Vercel serverless functions (no ML model, no external AI calls).
 
 ## Features
 
-- **Expenditure Tracker:** Allows users to input their expenditure details and visualize them through charts.
-- **Investment Recommendations:** Personalized investment recommendations based on user preferences.
-- **Community Forum:** Users can post and discuss financial topics in the community section.
-- **Financial Resources:** Access to educational resources and tools to improve financial literacy.
-- **AI Chatbot:** A finance assistant that provides real-time help and advice to users.
+- **Expenditure Tracker:** Enter monthly spending and get a 50/30/20 budget-rule breakdown with a donut chart and tailored tips.
+- **Investment Advisor:** A weighted scoring algorithm (age, horizon, return expectations, stated preferences) produces a risk profile and a recommended asset allocation.
+- **Financial Literacy Quiz:** A 10-question quiz scored against a fixed answer key, with feedback and tips by score band.
 
 ## Tech Stack
 
-- **Backend:** Django 5.1
-- **Frontend:** HTML, CSS, JavaScript
-- **Database:** PostgreSQL
-- **Charting Library:** Matplotlib/Plotly (for expenditure visualization)
+- **Frontend:** React + Vite
+- **Backend:** Vercel serverless functions (`/api`), plain JavaScript algorithms in `api/_lib/finance.js`
 
+## Local development
 
-### Prerequisites
+```bash
+npm install
+npm run dev        # frontend only, on Vite's dev server
+# or, to also run the /api functions locally:
+npx vercel dev
+```
 
-- Python 3.11
-- Django 5.1
-- PostgreSQL
-- Pipenv or virtualenv (optional but recommended)
+## Deploying
 
-
-
+Import the repo at https://vercel.com/new — it's a zero-config Vite project with `/api` functions. No environment variables are required.
